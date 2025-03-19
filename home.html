@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Local Pharmacies - Medicine Delivery System</title>
+    <link rel="stylesheet" href="home.css">
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <h1>Welcome to Local Pharmacy Delivery</h1>
+        <p>Find nearby pharmacies and order medicines online!</p>
+        
+        <!-- Navigation Section -->
+        <nav>
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="cart.html">Cart</a></li>
+                <li><a href="profile.html" id="profile-link">Profile</a></li> <!-- Link to Profile -->
+                <li><a href="order.html"></a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Pharmacies Section -->
+    <section class="pharmacy-container">
+        <h2>Local Pharmacies Near You</h2>
+        <div class="pharmacy-list" id="pharmacy-list">
+            <!-- Existing Pharmacies Cards -->
+            <div class="pharmacy-card" id="city-pharmacy">
+                <h3>City Pharmacy</h3>
+                <p>Address: 123 Main Street, Downtown</p>
+                <p>Contact: +1 123-456-7890</p>
+                <a href="pharmacy.html?pharmacy=city-pharmacy">Visit Pharmacy</a>
+            </div>
+            <div class="pharmacy-card" id="health-plus-pharmacy">
+                <h3>Health Plus Pharmacy</h3>
+                <p>Address: 456 Health Ave, Uptown</p>
+                <p>Contact: +1 987-654-3210</p>
+                <a href="pharmacy.html?pharmacy=health-plus-pharmacy">Visit Pharmacy</a>
+            </div>
+            <div class="pharmacy-card" id="quick-med-pharmacy">
+                <h3>Quick Med Pharmacy</h3>
+                <p>Address: 789 Speedy Blvd, Suburbs</p>
+                <p>Contact: +1 555-123-4567</p>
+                <a href="pharmacy.html?pharmacy=quick-med-pharmacy">Visit Pharmacy</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newly Added Medicine Section -->
+    <section id="new-medicine-section">
+        <h2>Newly Added Medicines</h2>
+        <div class="pharmacy-list" id="new-medicine-list">
+            <!-- New medicine cards will be added here dynamically -->
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>© 2025 Local Pharmacy Delivery System. All rights reserved.</p>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="hom.js"></script>
+    <script>
+        // Function to display newly added medicines under the respective pharmacies
+        function displayMedicines() {
+            const pharmacies = ['City Pharmacy', 'Health Plus Pharmacy', 'Quick Med Pharmacy'];
+
+            pharmacies.forEach(pharmacy => {
+                const pharmacyMedicines = JSON.parse(localStorage.getItem(pharmacy)) || [];
+                const pharmacyCard = document.getElementById(pharmacy.toLowerCase().replace(" ", "-"));
+
+                // Get the container to display the new medicine cards
+                const medicineList = pharmacyCard.querySelector(".pharmacy-list") || document.createElement("div");
+                pharmacyCard.appendChild(medicineList);
+
+                // If there are any medicines, loop through them and display them
+                pharmacyMedicines.forEach(medicine => {
+                    const medicineCard = document.createElement("div");
+                    medicineCard.classList.add("pharmacy-card");
+
+                    medicineCard.innerHTML = `
+                        <h3>${medicine.name}</h3>
+                        <p><strong>Number of Tablets:</strong> ${medicine.tablets}</p>
+                        <p><strong>Price:</strong> $${medicine.price}</p>
+                        <p><strong>Description:</strong> ${medicine.description}</p>
+                        <img src="${medicine.image}" alt="${medicine.name}" class="medicine-image"/>
+                        <p><strong>Pharmacy:</strong> ${medicine.pharmacy}</p>
+                    `;
+
+                    medicineList.appendChild(medicineCard);
+                });
+            });
+        }
+
+        // Call the function to display new medicines when the page loads
+        window.onload = displayMedicines;
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

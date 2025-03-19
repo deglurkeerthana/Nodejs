@@ -1,0 +1,69 @@
+/* Basic styling for the pharmacist dashboard */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f7fc;
+    padding: 20px;
+}
+
+header {
+    background-color: #100b6c;
+    color: white;
+    padding: 15px;
+    text-align: center;
+}
+
+nav ul {
+    list-style-type: none;
+}
+
+nav ul li {
+    display: inline;
+    margin: 10px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+.add-medicine-section {
+    margin-top: 30px;
+    padding: 20px;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    max-width: 600px;
+    margin: auto;
+}
+
+.add-medicine-section h2 {
+    text-align: center;
+}
+
+.add-medicine-section label {
+    display: block;
+    margin: 10px 0 5px;
+}
+
+.add-medicine-section input, .add-medicine-section textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.add-medicine-section button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #100b6c;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.add-medicine-section button:hover {
+    background-color: #100b6c;
+}

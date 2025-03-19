@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pharmacist Dashboard - Add Medicines</title>
+    <link rel="stylesheet" href="dashbord.css">
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <h1>Welcome, Pharmacist!</h1>
+        <nav>
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="profile.html">Profile</a></li>
+                <li><a href="login.html">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Add Medicine Form -->
+    <section class="add-medicine-section">
+        <h2>Add New Medicine</h2>
+        <form id="add-medicine-form">
+            <!-- Select Pharmacy Dropdown -->
+            <label for="select-pharmacy">Select Pharmacy:</label>
+            <select id="select-pharmacy" name="select-pharmacy" required>
+                <option value="" disabled selected>Select a pharmacy</option>
+                <option value="City Pharmacy">City Pharmacy</option>
+                <option value="Health Plus Pharmacy">Health Plus Pharmacy</option>
+                <option value="Quick Med Pharmacy">Quick Med Pharmacy</option>
+            </select>
+
+            <label for="medicine-name">Medicine Name:</label>
+            <input type="text" id="medicine-name" name="medicine-name" required>
+
+            <label for="medicine-tablets">Number of Tablets:</label>
+            <input type="number" id="medicine-tablets" name="medicine-tablets" required>
+
+            <label for="medicine-price">Price:</label>
+            <input type="number" id="medicine-price" name="medicine-price" required>
+
+            <label for="medicine-description">Description:</label>
+            <textarea id="medicine-description" name="medicine-description" required></textarea>
+
+            <label for="medicine-image">Upload Image:</label>
+            <input type="file" id="medicine-image" name="medicine-image" required>
+
+
+            <button type="submit">Add Medicine</button>
+        </form>
+    </section>
+
+    <script src="dashbord.js"></script>
+</body>
+</html>
+
+
+

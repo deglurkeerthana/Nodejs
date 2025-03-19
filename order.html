@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Tracking</title>
+    <link rel="stylesheet" href="order.css">
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <h1>Your Order is on its Way!</h1>
+    </header>
+
+    <!-- Order Tracking Section -->
+    <section class="order-tracking-container">
+        <h2>Order Details</h2>
+        
+        <!-- Display medicines ordered -->
+        <div id="order-details">
+            <!-- Medicines ordered dynamically populated here -->
+        </div>
+
+        <!-- Delivery Information -->
+        <div id="delivery-info">
+            <h4>Estimated Delivery Date</h4>
+            <p id="delivery-date">Loading...</p>
+
+            <h4>Track Your Order</h4>
+            <p>Your order is on the way. Use the tracking number to track your order status.</p>
+            <p><strong>Tracking Number:</strong> <span id="tracking-number">Loading...</span></p>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>© 2025 Local Pharmacy Delivery System. All rights reserved.</p>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        window.onload = () => {
+            const orderDetails = JSON.parse(localStorage.getItem('orderDetails'));
+            const userDetails = JSON.parse(localStorage.getItem('userDetails'));
+
+            if (orderDetails && userDetails) {
+                // Displaying the medicines ordered
+                let orderContent = `
+                    <h3>Medicines Ordered</h3>
+                    <ul>
+                `;
+
+                let totalAmount = 0;
+                orderDetails.forEach(item => {
+                    orderContent += `
+                        <li>
+                            <strong>Medicine:</strong> ${item.name}<br>
+                            <strong>Quantity:</strong> ${item.quantity}<br>
+                            <strong>Price per unit:</strong> $${item.price}<br>
+                            <strong>Total:</strong> $${item.quantity * item.price}
+                        </li>
+                        <hr>
+                    `;
+                    totalAmount += item.quantity * item.price;
+                });
+
+                orderContent += `</ul><h4>Total: $${totalAmount}</h4>`;
+
+                // Set order details to the page
+                document.getElementById('order-details').innerHTML = orderContent;
+
+                // Calculate and display delivery date
+                const orderDate = new Date();
+                const deliveryDate = new Date(orderDate);
+                deliveryDate.setDate(orderDate.getDate() + 2); // Delivery in 2 days
+
+                // Format the date to a readable format
+                const formattedDeliveryDate = deliveryDate.toLocaleDateString("en-US", { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+                document.getElementById('delivery-date').textContent = formattedDeliveryDate;
+
+                // Generate and display a tracking number
+                const trackingNumber = generateTrackingNumber();
+                document.getElementById('tracking-number').textContent = trackingNumber;
+                localStorage.setItem('trackingNumber', trackingNumber); // Save tracking number to localStorage
+            } else {
+                document.getElementById('order-details').innerHTML = '<p>No order details available.</p>';
+            }
+        };
+
+        // Function to generate a random tracking number (simulate Amazon-like tracking)
+        function generateTrackingNumber() {
+            const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+            let trackingNumber = '';
+            for (let i = 0; i < 12; i++) {
+                trackingNumber += chars.charAt(Math.floor(Math.random() * chars.length));
+            }
+            return trackingNumber;
+        }
+    </script>
+
+</body>
+</html>
+
+
+
+
+
+
+

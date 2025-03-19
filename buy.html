@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buy Now - Medicine</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <h1>Buy Now - Medicine</h1>
+    </header>
+
+    <!-- Buy Now Section -->
+    <section class="buy-now-container">
+        <!-- User Details Form -->
+        <div id="user-details">
+            <h3>Enter Your Details</h3>
+            <form id="user-form">
+                <label for="full-name">Full Name:</label>
+                <input type="text" id="full-name" name="full-name" required><br>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required><br>
+
+                <label for="phone">Phone Number:</label>
+                <input type="text" id="phone" name="phone" required><br>
+            </form>
+        </div>
+
+        <!-- Shipping Address Form -->
+        <div id="shipping-address">
+            <h3>Enter Shipping Address</h3>
+            <form id="shipping-form">
+                <label for="address">Address:</label>
+                <textarea id="address" name="address" required></textarea><br>
+
+                <label for="city">City:</label>
+                <input type="text" id="city" name="city" required><br>
+
+                <label for="zip-code">Zip Code:</label>
+                <input type="text" id="zip-code" name="zip-code" required><br>
+            </form>
+        </div>
+
+        <!-- Medicine Information -->
+        <div class="medicine-card" id="buy-now-item">
+            <!-- Medicine will be dynamically inserted here -->
+        </div>
+
+        <!-- Total Amount Section -->
+        <div id="total-amount-container">
+            <h3>Total Amount: $<span id="total-amount">0</span></h3>
+        </div>
+
+        <!-- Payment Options Section -->
+        <div id="payment-options">
+            <h3>Choose Payment Option</h3>
+            <form id="payment-form">
+                <label>
+                    <input type="radio" name="payment" value="cash" checked> Cash on Delivery
+                </label><br>
+                <label>
+                    <input type="radio" name="payment" value="online"> Online Payment
+                </label><br>
+                <button type="button" onclick="proceedToCheckout()">Proceed to Checkout</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>© 2025 Local Pharmacy Delivery System. All rights reserved.</p>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        window.onload = () => {
+            const buyNowItem = JSON.parse(localStorage.getItem('buyNowItem'));
+
+            if (buyNowItem) {
+                const itemContainer = document.getElementById('buy-now-item');
+                itemContainer.innerHTML = `
+                    <img src="images/${buyNowItem.name.toLowerCase().replace(" ", "_")}.jpg" alt="${buyNowItem.name}" class="medicine-image" />
+                    <h3>${buyNowItem.name}</h3>
+                    <p><strong>Price:</strong> $${buyNowItem.price}</p>
+                `;
+
+                // Display total amount
+                const totalAmount = buyNowItem.price;
+                document.getElementById('total-amount').textContent = totalAmount;
+            } else {
+                alert('No item selected for purchase.');
+            }
+        };
+
+        function proceedToCheckout() {
+            // Get the user details
+            const userDetails = {
+                fullName: document.getElementById('full-name').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                address: document.getElementById('address').value,
+                city: document.getElementById('city').value,
+                zipCode: document.getElementById('zip-code').value
+            };
+
+            // Save the user and shipping details to localStorage (or process them as needed)
+            localStorage.setItem('userDetails', JSON.stringify(userDetails));
+
+            const selectedPaymentOption = document.querySelector('input[name="payment"]:checked').value;
+
+            if (selectedPaymentOption === 'cash') {
+                alert('You selected Cash on Delivery. Proceeding to place your order.');
+                // Redirect to the shipping details page (Cash on Delivery)
+                window.location.href = "order.html"; // Replace with your shipping details page URL
+            } else if (selectedPaymentOption === 'online') {
+                alert('You selected Online Payment. Proceeding to payment gateway.');
+                // Redirect to the online payment details page
+                window.location.href = "onlinepay.html"; // Replace with your online payment details page URL
+            }
+        }
+    </script>
+
+</body>
+</html>
+
+
+
+
+
+

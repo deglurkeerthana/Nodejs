@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medicines at Pharmacy</title>
+    <link rel="stylesheet" href="pharmacy.css">
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <h1 id="pharmacy-name">Pharmacy Medicines</h1>
+    </header>
+
+    <!-- Search Bar Section -->
+    <section class="search-bar-container">
+        <input type="text" id="search-bar" placeholder="Search for medicines..." onkeyup="filterMedicines()" />
+    </section>
+
+    <!-- Medicines Section -->
+    <section class="medicine-container">
+        <h2>Medicines Available</h2>
+        <div class="medicine-list" id="medicine-list">
+            <!-- Medicines will be dynamically inserted here -->
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>© 2025 Local Pharmacy Delivery System. All rights reserved.</p>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="pharmacy.js"></script>
+</body>
+</html>
+
+
+
+

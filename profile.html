@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Profile - Local Pharmacy Delivery System</title>
+    <link rel="stylesheet" href="profile.css">
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <h1>Your Profile</h1>
+    </header>
+
+    <!-- Profile Display Section -->
+    <section id="profile-section">
+        <h2>Profile Information</h2>
+
+        <p><strong>Username:</strong> <span id="profile-username"></span></p>
+        <p><strong>Email:</strong> <span id="profile-email"></span></p>
+        <p><strong>Phone Number:</strong> <span id="profile-phone"></span></p>
+
+        <h2>Change Your Username</h2>
+        <form id="profile-form">
+            <label for="username">New Username:</label>
+            <input type="text" id="username" name="username" required>
+            <button type="submit">Update Username</button>
+        </form>
+        <p id="update-status"></p>
+    </section>
+
+    <footer>
+        <p>© 2025 Local Pharmacy Delivery System. All rights reserved.</p>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Get the user data from localStorage
+        const profileName = localStorage.getItem('username');
+        const profileEmail = localStorage.getItem('email');
+        const profilePhone = localStorage.getItem('phone');
+
+        // Display user information on the profile page
+        if (profileName) {
+            document.getElementById('profile-username').textContent = profileName;
+        } else {
+            document.getElementById('profile-username').textContent = 'No username set';
+        }
+
+        if (profileEmail) {
+            document.getElementById('profile-email').textContent = profileEmail;
+        } else {
+            document.getElementById('profile-email').textContent = 'No email set';
+        }
+
+        if (profilePhone) {
+            document.getElementById('profile-phone').textContent = profilePhone;
+        } else {
+            document.getElementById('profile-phone').textContent = 'No phone number set';
+        }
+
+        // Handle the form submission for changing the username
+        document.getElementById('profile-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const newUsername = document.getElementById('username').value;
+
+            // Update the username in localStorage
+            localStorage.setItem('username', newUsername);
+
+            // Provide feedback to the user
+            document.getElementById('update-status').textContent = `Your username has been updated to ${newUsername}.`;
+
+            // Optionally, redirect back to the home page after 2 seconds
+            setTimeout(function() {
+                window.location.href = 'home.html';
+            }, 2000);
+        });
+    </script>
+</body>
+</html>
+
+
+

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Confirmation</title>
+    <link rel="stylesheet" href="pharmacy.css">
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <h1>Order Confirmation</h1>
+    </header>
+
+    <!-- Order Confirmation Section -->
+    <section class="order-confirmation-container">
+        <h3>Thank you for your purchase!</h3>
+
+        <!-- Display order details -->
+        <div id="order-details">
+            <!-- Order details will be dynamically inserted here -->
+        </div>
+
+        <!-- Tracking Section -->
+        <div id="order-tracking">
+            <h4>Track Your Order</h4>
+            <p>Your order is being processed. Use the tracking number to check your order status.</p>
+            <p><strong>Tracking Number:</strong> <span id="tracking-number"></span></p>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>© 2025 Local Pharmacy Delivery System. All rights reserved.</p>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        window.onload = () => {
+            const orderDetails = JSON.parse(localStorage.getItem('orderDetails'));
+            const userDetails = JSON.parse(localStorage.getItem('userDetails'));
+
+            if (orderDetails && userDetails) {
+                // Displaying the order details
+                let orderContent = `
+                    <h4>Order Details</h4>
+                    <p><strong>Name:</strong> ${userDetails.fullName}</p>
+                    <p><strong>Email:</strong> ${userDetails.email}</p>
+                    <p><strong>Phone:</strong> ${userDetails.phone}</p>
+                    
+                    <h4>Shipping Address</h4>
+                    <p><strong>Address:</strong> ${userDetails.address}</p>
+                    <p><strong>City:</strong> ${userDetails.city}</p>
+                    <p><strong>Zip Code:</strong> ${userDetails.zipCode}</p>
+                    
+                    <h4>Medicines Ordered</h4>
+                `;
+
+                let totalAmount = 0;
+                // Loop through the items in the orderDetails array
+                orderDetails.forEach(item => {
+                    orderContent += `
+                        <p><strong>Medicine:</strong> ${item.name}</p>
+                        <p><strong>Quantity:</strong> ${item.quantity}</p>
+                        <p><strong>Price per unit:</strong> $${item.price}</p>
+                        <p><strong>Total Price for ${item.name}:</strong> $${item.quantity * item.price}</p>
+                        <hr>
+                    `;
+                    totalAmount += item.quantity * item.price;
+                });
+
+                // Display total amount
+                orderContent += `<h4>Total Amount: $${totalAmount}</h4>`;
+
+                // Calculate the delivery date (1 or 2 days after the order)
+                const orderDate = new Date();
+                const deliveryDate = new Date(orderDate);
+                deliveryDate.setDate(orderDate.getDate() + 2); // Delivery in 2 days
+
+                // Format the date to a readable format (e.g., March 20, 2025)
+                const formattedDeliveryDate = deliveryDate.toLocaleDateString("en-US", { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+
+                orderContent += `
+                    <h4>Estimated Delivery Date:</h4>
+                    <p>${formattedDeliveryDate}</p>
+                `;
+
+                // Set the order content into the page
+                document.getElementById('order-details').innerHTML = orderContent;
+
+                // Generate and display a tracking number
+                const trackingNumber = generateTrackingNumber();
+                document.getElementById('tracking-number').textContent = trackingNumber;
+                localStorage.setItem('trackingNumber', trackingNumber); // Save tracking number to localStorage
+            } else {
+                document.getElementById('order-details').innerHTML = '<p>No order details available.</p>';
+            }
+        };
+
+        // Function to generate a random tracking number (simulate Amazon-like tracking)
+        function generateTrackingNumber() {
+            const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+            let trackingNumber = '';
+            for (let i = 0; i < 12; i++) {
+                trackingNumber += chars.charAt(Math.floor(Math.random() * chars.length));
+            }
+            return trackingNumber;
+        }
+    </script>
+
+</body>
+</html>
+

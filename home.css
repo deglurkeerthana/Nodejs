@@ -1,0 +1,102 @@
+/* Basic reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+/* Header Section */
+header {
+    background-color: #100b6c;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Navigation Section */
+nav {
+    margin-top: 10px;
+}
+
+nav ul {
+    list-style-type: none;
+    display: flex;  /* Using Flexbox to align items in a row */
+    justify-content: center;  /* Centering the navigation items */
+}
+
+nav ul li {
+    margin: 0 15px;  /* Adding spacing between the links */
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+/* Hover effect for navigation links */
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
+/* Search Section */
+.search-section {
+    margin: 20px;
+    text-align: center;
+}
+
+/* Pharmacy Section */
+.pharmacy-container {
+    padding: 20px;
+    text-align: center;
+}
+
+.pharmacy-list {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;  /* Allow wrapping of cards on smaller screens */
+}
+
+.pharmacy-card {
+    background-color: #f4f4f4;
+    border-radius: 8px;
+    padding: 20px;
+    width: 250px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.pharmacy-card h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.pharmacy-card p {
+    margin: 5px 0;
+}
+
+.pharmacy-card button {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #100b6c;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.pharmacy-card button:hover {
+    background-color: #100b6c;
+}
+
+/* Footer Section */
+footer {
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    margin-top: 20px;
+}

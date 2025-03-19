@@ -1,0 +1,85 @@
+/* Basic reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+/* Header Section */
+header {
+    background-color: #100b6c;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Navigation Section */
+nav {
+    margin-top: 10px;
+}
+
+nav ul {
+    list-style-type: none;
+    display: flex;  /* Using Flexbox to align items in a row */
+    justify-content: center;  /* Centering the navigation items */
+}
+
+nav ul li {
+    margin: 0 15px;  /* Adding spacing between the links */
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+/* Hover effect for navigation links */
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
+/* About Us Section */
+.about-us {
+    padding: 20px;
+    text-align: center;
+}
+
+.about-us h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.about-us h3 {
+    font-size: 20px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.about-us p {
+    margin-bottom: 20px;
+    font-size: 16px;
+}
+
+.about-us ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.about-us ul li {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+/* Footer Section */
+footer {
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    margin-top: 20px;
+}

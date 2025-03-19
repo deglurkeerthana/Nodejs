@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Payment Details</title>
+    <link rel="stylesheet" href="pharmacy.css">
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <h1>Online Payment Details</h1>
+    </header>
+
+    <!-- Online Payment Form Section -->
+    <section class="payment-form-container">
+        <h3>Enter Payment Information</h3>
+        <form id="payment-form">
+            <label for="card-number">Card Number:</label>
+            <input type="text" id="card-number" name="card-number" required><br>
+
+            <label for="expiry-date">Expiry Date:</label>
+            <input type="text" id="expiry-date" name="expiry-date" required><br>
+
+            <label for="cvv">CVV:</label>
+            <input type="text" id="cvv" name="cvv" required><br>
+
+            <button type="submit">Proceed to Payment</button>
+        </form>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>© 2025 Local Pharmacy Delivery System. All rights reserved.</p>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        document.getElementById('payment-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            // Process the payment (In real-world, integrate a payment gateway like Stripe, PayPal, etc.)
+
+            // For now, simulate successful payment
+            alert('Payment successful! Your order will be processed.');
+
+            // Redirect to order confirmation page
+            window.location.href = "order.html"; // Redirect to order confirmation page
+        });
+    </script>
+
+</body>
+</html>
+

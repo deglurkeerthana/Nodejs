@@ -1,0 +1,78 @@
+/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+/* Header Section */
+header {
+    background-color: #100b6c;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Navigation Section */
+nav {
+    margin-top: 10px;
+}
+
+nav ul {
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+/* Profile Section */
+.profile-section {
+    padding: 20px;
+    text-align: center;
+}
+
+.profile-details {
+    margin-top: 20px;
+}
+
+.profile-details p {
+    font-size: 18px;
+    margin: 10px 0;
+}
+
+.profile-section button {
+    padding: 10px 20px;
+    background-color: #100b6c;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 20px;
+}
+
+.profile-section button:hover {
+    background-color: #100b6c;
+}
+
+/* Footer Section */
+footer {
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    margin-top: 20px;
+}
+

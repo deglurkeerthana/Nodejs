@@ -1,0 +1,82 @@
+/* General body styling */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+}
+
+/* Header Section */
+header {
+    background-color: #100b6c;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 36px;
+}
+
+header p {
+    font-size: 18px;
+}
+
+/* Pharmacy List Section */
+.pharmacy-container {
+    padding: 30px;
+    text-align: center;
+}
+
+.pharmacy-container h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+.pharmacy-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    justify-content: center;
+}
+
+.pharmacy-card {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.pharmacy-card h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.pharmacy-card p {
+    font-size: 16px;
+    margin: 5px 0;
+}
+
+.pharmacy-card a {
+    display: inline-block;
+    margin-top: 10px;
+    color: #007bff;
+    text-decoration: none;
+    padding: 10px;
+    background-color: #100b6c;
+    border-radius: 5px;
+}
+
+.pharmacy-card a:hover {
+    background-color: #100b6c;
+    text-decoration: none;
+}
+
+/* Footer Section */
+footer {
+    text-align: center;
+    background-color: #333;
+    color: white;
+    padding: 10px 0;
+}
